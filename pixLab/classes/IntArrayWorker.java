@@ -1,5 +1,20 @@
 public class IntArrayWorker
 {
+   public int getCount(int n) {
+      int run=0;
+      for (int[] i:matrix) for (int j:i) if (j==n) run++;
+      return run;
+   }
+   public int getLargest() {
+      int run=matrix[0][0];
+      for (int[] i:matrix) for (int j:i) if (j>run) run=j;
+      return run;
+   }
+   public int getColTotal(int n) {
+      int run=0;
+      for (int[] i:matrix) run+=i[n];
+      return run;
+   }
   /** two dimensional matrix */
   private int[][] matrix = null;
   

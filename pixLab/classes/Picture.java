@@ -88,18 +88,14 @@ public class Picture extends SimplePicture
   public int clip(int n,int m, int M) {if (n<m) return m;if (n>M) return M;return n;}
   
   /** Method to set the blue to 0 */
-  public void zeroBlue(int change)
+  public void zeroBlue()
   {
-    Random r = new Random();
     Pixel[][] pixels = this.getPixels2D();
     for (Pixel[] rowArray : pixels)
     {
       for (Pixel p : rowArray)
       {
-        Color newer = new Color(clip(p.getRed()+(r.nextInt(2*change+1)-change),0,255),
-                                clip(p.getGreen()+(r.nextInt(2*change+1)-change),0,255),
-                                clip(p.getBlue()+(r.nextInt(2*change+1)-change),0,255));
-        p.setColor(newer);
+        p.setBlue(0);
       }
     }
   }
@@ -202,21 +198,21 @@ public class Picture extends SimplePicture
   }
 
   /** Method to create a collage of several pictures */
-  public void createCollage()
-  {
-    Picture flower1 = new Picture("flower1.jpg");
-    Picture flower2 = new Picture("flower2.jpg");
-    this.copy(flower1,0,0);
-    this.copy(flower2,100,0);
-    this.copy(flower1,200,0);
-    Picture flowerNoBlue = new Picture(flower2);
-    flowerNoBlue.zeroBlue(0);
-    this.copy(flowerNoBlue,300,0);
-    this.copy(flower1,400,0);
-    this.copy(flower2,500,0);
-    this.mirrorVertical();
-    this.write("collage.jpg");
-  }
+ //  public void createCollage()
+//   {
+//     Picture flower1 = new Picture("flower1.jpg");
+//     Picture flower2 = new Picture("flower2.jpg");
+//     this.copy(flower1,0,0);
+//     this.copy(flower2,100,0);
+//     this.copy(flower1,200,0);
+//     Picture flowerNoBlue = new Picture(flower2);
+//     flowerNoBlue.zeroBlue(0);
+//     this.copy(flowerNoBlue,300,0);
+//     this.copy(flower1,400,0);
+//     this.copy(flower2,500,0);
+//     this.mirrorVertical();
+//     this.write("collage.jpg");
+//   }
   
   
   /** Method to show large changes in color 
@@ -249,12 +245,16 @@ public class Picture extends SimplePicture
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
+   public void keepOnlyBlue() {
+    Pixel[][] ppp = this.getPixels2D();
+    for(Pixel[] pp:ppp)for(Pixel p:pp){p.setRed(0);p.setGreen(0);}
+    }
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("temple.jpg");
-    beach.explore();
-    beach.almostInvert(50);
-    beach.explore();
+    Picture pic = new Picture("temple.jpg");
+    pic.explore();
+    pic.almostInvert(50);
+    pic.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this

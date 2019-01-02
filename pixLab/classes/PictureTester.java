@@ -11,7 +11,7 @@ public class PictureTester
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
-    Picture beach = new Picture("Cthulhu.jpg");
+    Picture beach = new Picture("beach.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
@@ -36,12 +36,12 @@ public class PictureTester
   }
   
   /** Method to test the collage method */
-  public static void testCollage()
-  {
-    Picture canvas = new Picture("640x480.jpg");
-    canvas.createCollage();
-    canvas.explore();
-  }
+  // public static void testCollage()
+//   {
+//     Picture canvas = new Picture("640x480.jpg");
+//     canvas.createCollage();
+//     canvas.explore();
+//   }
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
@@ -53,19 +53,27 @@ public class PictureTester
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
+    
+    public static void testKeepOnlyBlue() {
+      Picture ploop=new Picture("beach.jpg");
+      ploop.explore();
+      ploop.keepOnlyBlue();
+      ploop.explore();
+    }
+    
   public static void main(String[] args)
   {
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    //testKeepOnlyBlue();
+    testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-    testMirrorVertical();
+    //testMirrorVertical();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
