@@ -60,19 +60,37 @@ public class PictureTester
       ploop.keepOnlyBlue();
       ploop.explore();
     }
-    
+    public static void testNegate() {
+      Picture ploop=new Picture("Cthulhu.jpg");
+      ploop.explore();
+      ploop.negate();
+      ploop.explore();
+    }
+    public static void testGrayScale() {
+      Picture ploop=new Picture("Cthulhu.jpg");
+      ploop.explore();
+      ploop.grayScale();
+      ploop.explore();
+    }
+    public static void testFixUnderwater() {
+      Picture ploop=new Picture("water.jpg");
+      ploop.explore();
+      ploop.fixUnderwater();
+      ploop.explore();
+    }
   public static void main(String[] args)
   {
-    // uncomment a call here to run a test
-    // and comment out the ones you don't want
-    // to run
+    /*
+    Uncomment a call here to run a test and
+    comment out the ones you don't want to run.
+    */
     //testZeroBlue();
-    testKeepOnlyBlue();
+    //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
-    //testGrayscale();
-    //testFixUnderwater();
+    //testGrayScale();
+    testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();
     //testMirrorArms();

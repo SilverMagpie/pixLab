@@ -249,6 +249,24 @@ public class Picture extends SimplePicture
     Pixel[][] ppp = this.getPixels2D();
     for(Pixel[] pp:ppp)for(Pixel p:pp){p.setRed(0);p.setGreen(0);}
     }
+    public void negate() {
+      Pixel[][] ppp = this.getPixels2D();
+      for(Pixel[] pp:ppp)for(Pixel p:pp){p.setRed(255-p.getRed());p.setGreen(255-p.getGreen());p.setBlue(255-p.getBlue());}
+    }
+    public void grayScale(){
+      Pixel[][] ppp = this.getPixels2D();
+      for(Pixel[] pp:ppp)for(Pixel p:pp){int n=(p.getRed()+p.getBlue()+p.getGreen())/3;p.setRed(n);p.setGreen(n);p.setBlue(n);}
+    }
+    public void fixUnderwater(){
+      Pixel[][] ppp = this.getPixels2D();
+      for(Pixel[] pp:ppp)for(Pixel p:pp){
+         if (p.getRed()>20) p.setRed(clip(2*p.getRed(),0,255));
+         p.setGreen(clip(p.getGreen()-150,0,200));
+         if (p.getBlue()>170) p.setBlue(clip(p.getBlue(),0,255));
+         else p.setBlue(clip(p.getBlue(),0,255));
+         //p.setBlue(p.getBlue());
+      }
+    }
   public static void main(String[] args) 
   {
     Picture pic = new Picture("temple.jpg");
